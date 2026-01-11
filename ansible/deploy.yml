@@ -1,0 +1,30 @@
+---
+- name: Deploy Docker Container
+  hosts: webserver
+  become: yes
+  tasks:
+    - name: Install Docker
+      dnf:
+        name: docker
+        state: latest
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Add ec2-user to docker group
+      user:
+        name: ec2-user
+        groups: docker
+        append: yes
+
+    - name: Run the App from GHCR
+      community.docker.docker_container:
+        name: my-rest-app
+        image: ghcr.io/mgpetrova62/devops-project:main
+        state: started
+        restart_policy: always
+        published_ports:
+          - "80:80"
