@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: IMAGE_NAME: mgpetrova62/devops-project
+  IMAGE_NAME: mgpetrova62/devops-project
 
 jobs:
   build-and-push:
