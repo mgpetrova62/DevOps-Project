@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "eu-north-1" 
+  region = var.region 
 }
 
 resource "aws_security_group" "web_access" {
@@ -31,7 +31,7 @@ resource "aws_security_group" "web_access" {
 resource "aws_instance" "app_server" {
   ami           = "ami-0683ee28af6610487" 
   
-  instance_type = "t3.micro"
+  instance_type = var.instance_type
 
   associate_public_ip_address = true
   vpc_security_group_ids      = [aws_security_group.web_access.id]
