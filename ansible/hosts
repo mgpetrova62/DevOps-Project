@@ -1,2 +1,2 @@
 [webserver]
-13.60.218.232 ansible_user=ec2-user ansible_ssh_private_key_file=../terraform/my-devops-key.pem
+16.16.57.37 ansible_user=ec2-user ansible_ssh_private_key_file=../terraform/my-devops-key.pem
